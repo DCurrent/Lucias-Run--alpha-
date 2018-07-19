@@ -125,7 +125,7 @@ http://www.twitch.tv/javidx9
 
 #ifndef UNICODE
 //#error Please enable UNICODE for your compiler! VS: Project Properties -> General -> \
-Character Set -> Use Unicode. Thanks! - Javidx9
+//Character Set -> Use Unicode. Thanks! - Javidx9
 #endif
 
 #include <windows.h>
