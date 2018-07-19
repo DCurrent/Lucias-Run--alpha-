@@ -124,7 +124,7 @@ http://www.twitch.tv/javidx9
 #pragma comment(lib, "winmm.lib")
 
 #ifndef UNICODE
-#error Please enable UNICODE for your compiler! VS: Project Properties -> General -> \
+//#error Please enable UNICODE for your compiler! VS: Project Properties -> General -> \
 Character Set -> Use Unicode. Thanks! - Javidx9
 #endif
 
@@ -952,7 +952,7 @@ private:
 				// Update Title & Present Screen Buffer
 				wchar_t s[256];
 				swprintf_s(s, 256, L"OneLoneCoder.com - Console Game Engine - %s - FPS: %3.2f", m_sAppName.c_str(), 1.0f / fElapsedTime);
-				SetConsoleTitle(s);
+				SetConsoleTitle((LPCSTR)s);
 				WriteConsoleOutput(m_hConsole, m_bufScreen, { (short)m_nScreenWidth, (short)m_nScreenHeight }, { 0,0 }, &m_rectWindow);
 			}
 
@@ -1359,7 +1359,7 @@ protected:
 	int Error(const wchar_t *msg)
 	{
 		wchar_t buf[256];
-		FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buf, 256, NULL);
+		FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), (LPSTR)buf, 256, NULL);
 		SetConsoleActiveScreenBuffer(m_hOriginalConsole);
 		wprintf(L"ERROR: %s\n\t%s\n", msg, buf);
 		return 0;
